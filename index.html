@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6c4cf1">
+  <meta name="description" content="StudyMate helps students plan study sessions, track assignments, and celebrate progress.">
+  <title>StudyMate — Make every study session count</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="StudyMate home">
+        <span class="brand-mark">✦</span><span>study<span class="brand-light">mate</span><small>YOUR LITTLE STUDY UNIVERSE</small></span>
+      </a>
+      <div class="profile-mini">
+        <div class="avatar">🌈</div><div><strong>Hey, superstar!</strong><span>Small steps. Big dreams.</span></div>
+      </div>
+      <p class="nav-label">YOUR SPACE</p>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard"><span>◫</span> Overview <span class="nav-dot"></span></button>
+        <button class="nav-item" data-view="tasks"><span>☑</span> My tasks</button>
+        <button class="nav-item" data-view="schedule"><span>▦</span> Study schedule</button>
+      </nav>
+      <div class="sidebar-note">
+        <div class="note-stars">✦ ✧ ✦</div>
+        <strong>You're doing better than you think.</strong>
+        <p>Progress is progress, no matter how small. 💜</p>
+        <div class="note-art">📚 🪴 ☁️</div>
+      </div>
+      <div class="sidebar-bottom"><span class="online-dot"></span> Your study space, just for you</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb">MY SPACE <span>/</span> <strong id="breadcrumbLabel">Overview</strong></div>
+        <div class="top-actions"><span class="today-pill">☀️ <span id="todayLabel">A lovely day to learn</span></span><button class="icon-button" id="themeButton" title="Toggle colour theme" aria-label="Toggle colour theme">☾</button><div class="top-avatar">S</div></div>
+      </header>
+
+      <section class="view active-view" id="dashboardView">
+        <div class="hero-banner">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="sparkle">✦</span> YOUR PERSONAL STUDY COMPANION</div>
+            <h1>Make today<br> <span>count.</span> ✨</h1>
+            <p>A little focus today, a lot of confidence tomorrow.<br>Let's make some magic happen.</p>
+            <button class="button button-white" id="heroAddButton">＋ Plan a study task <span>→</span></button>
+          </div>
+          <div class="hero-illustration" aria-hidden="true">
+            <div class="sunburst"></div><div class="floating-card fc-one">✎ <small>You've got this!</small></div>
+            <div class="book-stack"><div class="book book-a">LEARN</div><div class="book book-b">GROW</div><div class="book book-c">SHINE</div></div>
+            <div class="hero-plant">🌱</div><div class="hero-star star-a">✦</div><div class="hero-star star-b">✧</div>
+          </div>
+          <div class="hero-decoration dec-one"></div><div class="hero-decoration dec-two"></div>
+        </div>
+
+        <div class="section-heading"><div><p class="eyebrow muted">YOUR PROGRESS AT A GLANCE</p><h2>Look at you go! <span>💖</span></h2></div><span class="tiny-caption">Every little win matters</span></div>
+        <div class="stats-grid">
+          <article class="stat-card stat-purple"><div class="stat-icon">📋</div><span class="stat-label">Total tasks</span><strong id="totalTasks">0</strong><div class="stat-foot"><span class="mini-bar"><i style="width:72%"></i></span>Things to conquer</div><span class="stat-deco">✦</span></article>
+          <article class="stat-card stat-pink"><div class="stat-icon">🎯</div><span class="stat-label">Completed</span><strong id="completedTasks">0</strong><div class="stat-foot"><span class="mini-bar"><i id="completedBar" style="width:0%"></i></span>Look at those wins!</div><span class="stat-deco">♡</span></article>
+          <article class="stat-card stat-yellow"><div class="stat-icon">⏳</div><span class="stat-label">Study hours</span><strong id="studyHours">0<span class="unit">h</span></strong><div class="stat-foot"><span class="mini-bar"><i style="width:55%"></i></span>Time invested in you</div><span class="stat-deco">✧</span></article>
+          <article class="stat-card stat-mint"><div class="stat-icon">⚡</div><span class="stat-label">Completion</span><strong id="completionRate">0<span class="unit">%</span></strong><div class="stat-foot"><span class="mini-bar"><i id="rateBar" style="width:0%"></i></span>You're building momentum</div><span class="stat-deco">✦</span></article>
+        </div>
+
+        <div class="dashboard-columns">
+          <section class="panel tasks-panel">
+            <div class="panel-heading"><div><h3>On your radar <span>🌷</span></h3><p>Your next little victories</p></div><button class="text-button" data-goto="tasks">See all →</button></div>
+            <div id="dashboardTaskList" class="task-list"></div>
+          </section>
+          <section class="panel focus-panel">
+            <div class="panel-heading"><div><h3>Focus garden <span>🌼</span></h3><p>Watch your progress bloom</p></div></div>
+            <div class="garden-visual"><div class="garden-sun">☀</div><div class="garden-cloud">☁</div><div class="garden-flower flower-one">🌷</div><div class="garden-flower flower-two">🌼</div><div class="garden-flower flower-three">🌸</div><div class="garden-ground"></div></div>
+            <div class="focus-bottom"><div><span class="muted-label">TASKS IN BLOOM</span><strong id="gardenCount">0 / 0</strong></div><div class="circle-progress" id="gardenCircle"><span id="gardenPercent">0%</span></div></div>
+            <p class="encouragement" id="encouragement">Plant a task today. Watch your confidence grow. 🌱</p>
+          </section>
+        </div>
+        <footer class="footer-note">Made with 💜 and a little bit of ambition. <span>Keep showing up for yourself.</span></footer>
+      </section>
+
+      <section class="view" id="tasksView">
+        <div class="page-title-row"><div><p class="eyebrow muted">ONE THING AT A TIME</p><h1>My task garden <span>🌻</span></h1><p class="page-subtitle">Turn those to-dos into ta-das!</p></div><button class="button button-primary" id="addTaskButton">＋ Add a task</button></div>
+        <div class="filter-bar"><label class="search-box">⌕ <input id="searchInput" type="search" placeholder="Find a task, subject, or note..." aria-label="Search tasks"></label><select id="statusFilter" aria-label="Filter by status"><option value="all">All tasks</option><option value="active">In progress</option><option value="completed">Completed</option></select><select id="subjectFilter" aria-label="Filter by subject"><option value="all">All subjects</option></select></div>
+        <div class="task-summary-strip"><span>✨ Your list, your pace</span><span id="filteredCount">0 tasks</span></div>
+        <div id="allTaskList" class="all-task-grid"></div>
+      </section>
+
+      <section class="view" id="scheduleView">
+        <div class="page-title-row"><div><p class="eyebrow muted">A PLAN THAT LOVES YOU BACK</p><h1>Study schedule <span>🗓️</span></h1><p class="page-subtitle">See what's coming up and make room for your goals.</p></div><button class="button button-primary" id="scheduleAddButton">＋ Add a task</button></div>
+        <div class="panel schedule-panel"><div class="panel-heading"><div><h3>Your upcoming sessions</h3><p>Sorted by due date, so nothing sneaks up on you.</p></div><span class="calendar-sticker">📌</span></div><div id="scheduleList" class="schedule-list"></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="taskModal" aria-hidden="true">
+    <section class="task-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="Close dialog">×</button>
+      <div class="modal-emoji">🪄</div><p class="eyebrow muted">A FRESH LITTLE START</p><h2 id="modalTitle">Add a new task</h2><p class="modal-subtitle">Big goal or tiny step — it all belongs here.</p>
+      <form id="taskForm">
+        <input type="hidden" id="taskId">
+        <label class="field-label" for="taskTitle">Task name <span>*</span></label><input class="field" id="taskTitle" required maxlength="90" placeholder="e.g. Revise chapter 3">
+        <div class="form-row"><div><label class="field-label" for="taskSubject">Subject <span>*</span></label><input class="field" id="taskSubject" required maxlength="40" placeholder="e.g. Mathematics" list="subjectOptions"><datalist id="subjectOptions"><option>Mathematics</option><option>Computer Science</option><option>English</option><option>Physics</option><option>Project Work</option></datalist></div><div><label class="field-label" for="taskDate">Due date <span>*</span></label><input class="field" type="date" id="taskDate" required></div></div>
+        <div class="form-row"><div><label class="field-label" for="taskPriority">Priority</label><select class="field" id="taskPriority"><option value="low">🌿 Low-key</option><option value="medium" selected>🌼 Medium</option><option value="high">🔥 High priority</option></select></div><div><label class="field-label" for="taskDuration">Study time (minutes)</label><input class="field" type="number" id="taskDuration" min="5" max="600" step="5" value="30"></div></div>
+        <label class="field-label" for="taskNotes">Little notes <span class="optional">(optional)</span></label><textarea class="field notes-field" id="taskNotes" rows="3" maxlength="300" placeholder="Anything you want future-you to remember?"></textarea>
+        <div class="form-actions"><button type="button" class="button button-soft" id="cancelModal">Maybe later</button><button class="button button-primary" type="submit">Save my task ✨</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
